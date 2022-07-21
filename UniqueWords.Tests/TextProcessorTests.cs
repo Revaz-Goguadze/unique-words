@@ -248,8 +248,10 @@ namespace UniqueWords.Tests
         [TestCaseSource(nameof(GetUniqueWordsFromArrayData))]
         public void GetUniqueWordsFromArray_ReturnsUniqueWordList(string[] words, List<string> expectedResult)
         {
+            // Act
             List<string> actualResult = TextProcessor.GetUniqueWordsFromArray(words);
 
+            // Assert
             Assert.AreEqual(expectedResult.Count, actualResult.Count);
             Assert.That(actualResult, Is.EquivalentTo(expectedResult));
         }
@@ -264,20 +266,24 @@ namespace UniqueWords.Tests
         [TestCase("    aaa     bbb          ccc             ddd                   ", ExpectedResult = 4)]
         public int CountUniqueWordsInText_ReturnsUniqueWordsNumber(string text)
         {
+            // Act
             return TextProcessor.CountUniqueWordsInText(text);
         }
 
         [TestCaseSource(nameof(GetUniqueWordsFromEnumerableData))]
         public void GetUniqueWordsFromEnumerable_ReturnsUniqueWordList(IEnumerable<string> lines, IEnumerable<string> expectedResult)
         {
+            // Act
             IEnumerable<string> actualResult = TextProcessor.GetUniqueWordsFromEnumerable(lines);
 
+            // Assert
             Assert.That(actualResult, Is.EquivalentTo(expectedResult));
         }
 
         [TestCaseSource(nameof(GetUniqueWordsArrayData))]
         public void GetUniqueWordsArray_ReturnsUniqueWordArray(IEnumerable<string> lines, char separator, string[][] expectedResult)
         {
+            // Act
             string[][] actualResult = TextProcessor.GetUniqueWordsArray(lines, separator);
 
             Assert.AreEqual(expectedResult.Length, actualResult.Length);
@@ -287,8 +293,10 @@ namespace UniqueWords.Tests
         [TestCaseSource(nameof(GetUniqueWordsCollectionData))]
         public void GetUniqueWordsCollection_ReturnsUniqueWordCollection(string text, char separator, string[] expectedResult)
         {
+            // Act
             ICollection<string> actualResult = TextProcessor.GetUniqueWordsCollection(text, separator);
 
+            // Assert
             Assert.AreEqual(expectedResult.Length, actualResult.Count);
             Assert.That(actualResult, Is.EquivalentTo(expectedResult));
         }
@@ -308,9 +316,13 @@ namespace UniqueWords.Tests
         [TestCase("    aaa    ,    bbb    ,    bbb    ,    ccc    ", ',', new string[] { "aaa", "bbb", "ccc" })]
         public void GetUniqueWordsInCharCollection_ReturnsUniqueWordsNumber(string text, char separator, ICollection<string> expectedResult)
         {
+            // Arrange
             char[] collection = text.ToCharArray();
+
+            // Act
             ICollection<string> actualResult = TextProcessor.GetUniqueWordsInCharCollection(collection, separator);
 
+            // Assert
             Assert.AreEqual(expectedResult.Count, actualResult.Count);
             Assert.That(actualResult, Is.EquivalentTo(expectedResult));
         }
