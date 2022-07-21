@@ -98,13 +98,15 @@ Implement the [CountUniqueWordsInText](UniqueWords/TextProcessor.cs#L18) method 
 
 ![CountUniqueWordsInText Algorithm](images/unique-words02.png)
 
-Ranges in C# are translated to the [String.Substring](https://docs.microsoft.com/en-us/dotnet/api/system.string.substring) method calls.
+Use the [List&lt;T&gt;.IndexOf](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.indexof) method for searching an element in the word list.
+
+Ranges were introduced in C# 8.0 allow a convenient and uniform syntax for accessing a flat sequence of list elements.
 
 ```cs
 string word = text[position..spaceIndex];
 ```
 
-The line above will be translated to this line:
+Anyway, the C# compiler will translate the line above to [String.Substring](https://docs.microsoft.com/en-us/dotnet/api/system.string.substring) method call.
 
 ```cs
 string word = text.Substring(position, spaceIndex - position);
